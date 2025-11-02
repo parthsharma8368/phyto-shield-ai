@@ -123,7 +123,7 @@ export const ExpensePredictor = ({ expenses }: ExpensePredictorProps) => {
               <div className="p-4 rounded-lg bg-gradient-to-br from-warning/10 to-warning/5 border border-warning/20">
                 <div className="text-sm text-muted-foreground mb-1">30-Day Projection</div>
                 <div className="text-2xl font-bold text-warning">
-                  ${thirtyDayProjection.toFixed(2)}
+                  ₹{thirtyDayProjection.toFixed(2)}
                 </div>
                 <div className="text-sm text-muted-foreground mt-1 flex items-center gap-1">
                   <AlertTriangle className="h-3 w-3" />
@@ -133,39 +133,45 @@ export const ExpensePredictor = ({ expenses }: ExpensePredictorProps) => {
             </div>
 
             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={predictionData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(214, 32%, 91%)" />
+              <LineChart data={predictionData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(217, 33%, 25%)" />
                 <XAxis 
                   dataKey="date" 
-                  tick={{ fontSize: 12 }}
+                  tick={{ fontSize: 11, fill: 'hsl(215, 20%, 70%)' }}
                   interval="preserveStartEnd"
                 />
-                <YAxis tick={{ fontSize: 12 }} />
-                <Tooltip 
-                  formatter={(value: number) => `$${value.toFixed(2)}`}
-                  contentStyle={{ 
-                    backgroundColor: 'hsl(0, 0%, 100%)',
-                    border: '1px solid hsl(214, 32%, 91%)',
-                    borderRadius: '8px'
-                  }}
+                <YAxis 
+                  tick={{ fontSize: 11, fill: 'hsl(215, 20%, 70%)' }}
+                  tickFormatter={(value) => `₹${value}`}
+                  width={60}
                 />
-                <Legend />
+                <Tooltip 
+                  formatter={(value: number) => [`₹${value.toFixed(2)}`, '']}
+                  contentStyle={{ 
+                    backgroundColor: 'hsl(222, 47%, 15%)',
+                    border: '1px solid hsl(217, 33%, 25%)',
+                    borderRadius: '8px',
+                    color: 'hsl(210, 40%, 98%)'
+                  }}
+                  labelStyle={{ color: 'hsl(210, 40%, 98%)' }}
+                />
+                <Legend wrapperStyle={{ color: 'hsl(210, 40%, 98%)' }} />
                 <Line 
                   type="monotone" 
                   dataKey="actual" 
-                  stroke="hsl(221, 83%, 53%)" 
+                  stroke="hsl(221, 83%, 58%)" 
                   strokeWidth={2}
-                  dot={{ fill: 'hsl(221, 83%, 53%)', r: 4 }}
+                  dot={{ fill: 'hsl(221, 83%, 58%)', r: 4 }}
                   name="Actual Spending"
                   connectNulls
                 />
                 <Line 
                   type="monotone" 
                   dataKey="predicted" 
-                  stroke="hsl(38, 92%, 50%)" 
+                  stroke="hsl(38, 92%, 55%)" 
                   strokeWidth={2}
                   strokeDasharray="5 5"
-                  dot={{ fill: 'hsl(38, 92%, 50%)', r: 4 }}
+                  dot={{ fill: 'hsl(38, 92%, 55%)', r: 4 }}
                   name="Predicted Spending"
                   connectNulls
                 />

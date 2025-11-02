@@ -7,7 +7,7 @@ interface ExpenseChartsProps {
   expenses: Expense[];
 }
 
-const COLORS = ['hsl(221, 83%, 53%)', 'hsl(174, 72%, 56%)', 'hsl(142, 71%, 45%)', 'hsl(38, 92%, 50%)', 'hsl(0, 84%, 60%)', 'hsl(271, 76%, 53%)', 'hsl(24, 95%, 53%)', 'hsl(198, 93%, 60%)'];
+const COLORS = ['hsl(221, 83%, 58%)', 'hsl(174, 72%, 56%)', 'hsl(142, 71%, 50%)', 'hsl(38, 92%, 55%)', 'hsl(0, 84%, 65%)', 'hsl(271, 76%, 53%)', 'hsl(24, 95%, 53%)', 'hsl(198, 93%, 60%)'];
 
 export const ExpenseCharts = ({ expenses }: ExpenseChartsProps) => {
   // Category breakdown for pie chart
@@ -69,8 +69,8 @@ export const ExpenseCharts = ({ expenses }: ExpenseChartsProps) => {
                 data={categoryData}
                 cx="50%"
                 cy="50%"
-                labelLine={false}
-                label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                labelLine={true}
+                label={({ name, value }) => `${name}: ₹${value.toFixed(2)}`}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="value"
@@ -79,7 +79,16 @@ export const ExpenseCharts = ({ expenses }: ExpenseChartsProps) => {
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value: number) => `$${value.toFixed(2)}`} />
+              <Tooltip 
+                formatter={(value: number) => `₹${value.toFixed(2)}`}
+                contentStyle={{ 
+                  backgroundColor: 'hsl(222, 47%, 15%)',
+                  border: '1px solid hsl(217, 33%, 25%)',
+                  borderRadius: '8px',
+                  color: 'hsl(210, 40%, 98%)'
+                }}
+                labelStyle={{ color: 'hsl(210, 40%, 98%)' }}
+              />
             </PieChart>
           </ResponsiveContainer>
         </CardContent>
@@ -92,23 +101,29 @@ export const ExpenseCharts = ({ expenses }: ExpenseChartsProps) => {
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={dailyData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(214, 32%, 91%)" />
+            <LineChart data={dailyData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(217, 33%, 25%)" />
               <XAxis 
                 dataKey="date" 
-                tick={{ fontSize: 12 }}
+                tick={{ fontSize: 11, fill: 'hsl(215, 20%, 70%)' }}
                 interval="preserveStartEnd"
               />
-              <YAxis tick={{ fontSize: 12 }} />
-              <Tooltip 
-                formatter={(value: number) => `$${value.toFixed(2)}`}
-                contentStyle={{ 
-                  backgroundColor: 'hsl(0, 0%, 100%)',
-                  border: '1px solid hsl(214, 32%, 91%)',
-                  borderRadius: '8px'
-                }}
+              <YAxis 
+                tick={{ fontSize: 11, fill: 'hsl(215, 20%, 70%)' }}
+                tickFormatter={(value) => `₹${value}`}
+                width={60}
               />
-              <Legend />
+              <Tooltip 
+                formatter={(value: number) => [`₹${value.toFixed(2)}`, 'Amount']}
+                contentStyle={{ 
+                  backgroundColor: 'hsl(222, 47%, 15%)',
+                  border: '1px solid hsl(217, 33%, 25%)',
+                  borderRadius: '8px',
+                  color: 'hsl(210, 40%, 98%)'
+                }}
+                labelStyle={{ color: 'hsl(210, 40%, 98%)' }}
+              />
+              <Legend wrapperStyle={{ color: 'hsl(210, 40%, 98%)' }} />
               <Line 
                 type="monotone" 
                 dataKey="amount" 
@@ -130,22 +145,31 @@ export const ExpenseCharts = ({ expenses }: ExpenseChartsProps) => {
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={monthlyData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(214, 32%, 91%)" />
-              <XAxis dataKey="month" tick={{ fontSize: 12 }} />
-              <YAxis tick={{ fontSize: 12 }} />
-              <Tooltip 
-                formatter={(value: number) => `$${value.toFixed(2)}`}
-                contentStyle={{ 
-                  backgroundColor: 'hsl(0, 0%, 100%)',
-                  border: '1px solid hsl(214, 32%, 91%)',
-                  borderRadius: '8px'
-                }}
+            <BarChart data={monthlyData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(217, 33%, 25%)" />
+              <XAxis 
+                dataKey="month" 
+                tick={{ fontSize: 11, fill: 'hsl(215, 20%, 70%)' }} 
               />
-              <Legend />
+              <YAxis 
+                tick={{ fontSize: 11, fill: 'hsl(215, 20%, 70%)' }}
+                tickFormatter={(value) => `₹${value}`}
+                width={60}
+              />
+              <Tooltip 
+                formatter={(value: number) => [`₹${value.toFixed(2)}`, 'Amount']}
+                contentStyle={{ 
+                  backgroundColor: 'hsl(222, 47%, 15%)',
+                  border: '1px solid hsl(217, 33%, 25%)',
+                  borderRadius: '8px',
+                  color: 'hsl(210, 40%, 98%)'
+                }}
+                labelStyle={{ color: 'hsl(210, 40%, 98%)' }}
+              />
+              <Legend wrapperStyle={{ color: 'hsl(210, 40%, 98%)' }} />
               <Bar 
                 dataKey="amount" 
-                fill="hsl(142, 71%, 45%)" 
+                fill="hsl(142, 71%, 50%)" 
                 radius={[8, 8, 0, 0]}
                 name="Amount"
               />

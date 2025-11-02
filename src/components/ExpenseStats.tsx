@@ -20,21 +20,21 @@ export const ExpenseStats = ({ expenses }: ExpenseStatsProps) => {
   const stats = [
     {
       title: "Total Spending",
-      value: `$${total.toFixed(2)}`,
+      value: `₹${total.toFixed(2)}`,
       icon: DollarSign,
       gradient: "gradient-primary",
       iconColor: "text-primary"
     },
     {
       title: "This Month",
-      value: `$${monthlyTotal.toFixed(2)}`,
+      value: `₹${monthlyTotal.toFixed(2)}`,
       icon: Calendar,
       gradient: "gradient-secondary",
       iconColor: "text-secondary"
     },
     {
       title: "Average Expense",
-      value: `$${average.toFixed(2)}`,
+      value: `₹${average.toFixed(2)}`,
       icon: TrendingUp,
       gradient: "gradient-success",
       iconColor: "text-success"

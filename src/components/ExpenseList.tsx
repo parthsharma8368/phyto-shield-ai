@@ -74,7 +74,7 @@ export const ExpenseList = ({ expenses, onDeleteExpense }: ExpenseListProps) => 
                     </TableCell>
                     <TableCell>{expense.description}</TableCell>
                     <TableCell className="text-right font-semibold text-primary">
-                      ${expense.amount.toFixed(2)}
+                      ₹{expense.amount.toFixed(2)}
                     </TableCell>
                     <TableCell className="text-right">
                       <Button
