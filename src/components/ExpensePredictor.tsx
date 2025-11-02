@@ -88,15 +88,15 @@ export const ExpensePredictor = ({ expenses }: ExpensePredictorProps) => {
     .reduce((sum, d) => sum + (d.predicted || 0), 0);
 
   return (
-    <Card className="shadow-md hover:shadow-lg transition-smooth border-primary/10">
-      <CardHeader className="gradient-secondary text-foreground rounded-t-xl">
+    <Card className="shadow-lg hover:shadow-xl transition-smooth border-secondary/20 bg-card/95 backdrop-blur glow-effect">
+      <CardHeader className="gradient-secondary rounded-t-xl">
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle className="text-2xl flex items-center gap-2">
+            <CardTitle className="text-2xl flex items-center gap-2 text-foreground">
               <TrendingUp className="h-6 w-6" />
               Expense Predictor
             </CardTitle>
-            <CardDescription className="text-foreground/70 mt-2">
+            <CardDescription className="text-foreground/80 mt-2">
               Based on linear regression analysis of your spending patterns
             </CardDescription>
           </div>

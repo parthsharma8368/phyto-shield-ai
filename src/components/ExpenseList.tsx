@@ -27,7 +27,7 @@ export const ExpenseList = ({ expenses, onDeleteExpense }: ExpenseListProps) => 
   };
 
   return (
-    <Card className="shadow-md hover:shadow-lg transition-smooth border-primary/10">
+    <Card className="shadow-lg hover:shadow-xl transition-smooth border-primary/20 bg-card/95 backdrop-blur glow-effect">
       <CardHeader>
         <CardTitle className="text-primary">Expense History</CardTitle>
         <CardDescription>View and manage all your recorded expenses</CardDescription>

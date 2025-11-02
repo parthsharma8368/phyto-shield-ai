@@ -68,10 +68,10 @@ export const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
   };
 
   return (
-    <Card className="shadow-md hover:shadow-lg transition-smooth border-primary/10">
-      <CardHeader className="gradient-primary text-primary-foreground rounded-t-xl">
-        <CardTitle className="text-2xl">Add New Expense</CardTitle>
-        <CardDescription className="text-primary-foreground/80">
+    <Card className="shadow-lg hover:shadow-xl glow-effect transition-smooth border-primary/20 bg-card/95 backdrop-blur">
+      <CardHeader className="gradient-primary rounded-t-xl">
+        <CardTitle className="text-2xl text-primary-foreground">Add New Expense</CardTitle>
+        <CardDescription className="text-primary-foreground/90">
           Track your spending by adding expenses below
         </CardDescription>
       </CardHeader>

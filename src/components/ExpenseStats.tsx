@@ -53,7 +53,7 @@ export const ExpenseStats = ({ expenses }: ExpenseStatsProps) => {
       {stats.map((stat, index) => (
         <Card 
           key={index} 
-          className="overflow-hidden shadow-md hover:shadow-lg transition-smooth border-primary/10 hover:scale-105"
+          className="overflow-hidden shadow-lg hover:shadow-xl transition-smooth border-primary/20 hover:scale-105 bg-card/95 backdrop-blur glow-effect"
         >
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">

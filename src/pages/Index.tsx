@@ -37,9 +37,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Hero Header */}
-      <header className="gradient-primary text-primary-foreground py-12 px-4 shadow-lg">
+      <header className="gradient-hero text-primary-foreground py-12 px-4 shadow-2xl glow-effect relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-4">
             <Wallet className="h-10 w-10" />
@@ -81,7 +81,7 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-card border-t mt-12 py-6">
+      <footer className="bg-card/50 backdrop-blur border-t border-primary/20 mt-12 py-6">
         <div className="max-w-7xl mx-auto px-4 text-center text-muted-foreground">
           <div className="flex items-center justify-center gap-2 mb-2">
             <TrendingDown className="h-5 w-5" />

@@ -57,7 +57,7 @@ export const ExpenseCharts = ({ expenses }: ExpenseChartsProps) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <Card className="shadow-md hover:shadow-lg transition-smooth border-primary/10">
+      <Card className="shadow-lg hover:shadow-xl transition-smooth border-primary/20 bg-card/95 backdrop-blur glow-effect">
         <CardHeader>
           <CardTitle className="text-primary">Spending by Category</CardTitle>
           <CardDescription>Distribution of your expenses across categories</CardDescription>
@@ -85,7 +85,7 @@ export const ExpenseCharts = ({ expenses }: ExpenseChartsProps) => {
         </CardContent>
       </Card>
 
-      <Card className="shadow-md hover:shadow-lg transition-smooth border-primary/10">
+      <Card className="shadow-lg hover:shadow-xl transition-smooth border-primary/20 bg-card/95 backdrop-blur glow-effect">
         <CardHeader>
           <CardTitle className="text-secondary">Daily Spending Trend</CardTitle>
           <CardDescription>Your spending pattern over the last 30 days</CardDescription>
@@ -123,7 +123,7 @@ export const ExpenseCharts = ({ expenses }: ExpenseChartsProps) => {
         </CardContent>
       </Card>
 
-      <Card className="lg:col-span-2 shadow-md hover:shadow-lg transition-smooth border-primary/10">
+      <Card className="lg:col-span-2 shadow-lg hover:shadow-xl transition-smooth border-primary/20 bg-card/95 backdrop-blur glow-effect">
         <CardHeader>
           <CardTitle className="text-success">Monthly Comparison</CardTitle>
           <CardDescription>Compare your spending across the last 6 months</CardDescription>
