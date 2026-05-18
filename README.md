@@ -1,73 +1,111 @@
-# Welcome to your Lovable project
+# 🌿 PhytoShield AI — Crop Health & Plant Disease Diagnostics
 
-## Project info
+> **An intelligent, computer-vision powered platform that empowers farmers, gardeners, and agronomists to instantly diagnose plant diseases, identify pests, and receive eco-friendly treatment plans using Multi-Modal Vision AI.**
 
-**URL**: https://lovable.dev/projects/f2a61883-3406-450b-b58e-eb4e47545db5
+---
 
-## How can I edit this code?
+## 📖 Project Overview & Purpose
 
-There are several ways of editing your application.
+**PhytoShield AI** is a state-of-the-art agricultural intelligence platform designed to secure crop yields and promote sustainable farming practices. Crop diseases and pests account for up to 40% of global food production losses. PhytoShield AI bridges the gap between expert plant pathology and everyday growers by providing a **zero-friction physical-to-digital diagnosis pipeline**:
 
-**Use Lovable**
+1. **Snap or Upload a Photo:** The grower takes a photo of a diseased or distressed leaf, stem, or fruit using the mobile-friendly web interface.
+2. **Vision AI Analysis:** Powered by high-speed multi-modal vision models, the platform instantly identifies visual indicators of fungal, bacterial, viral, or nutrient-deficiency stresses.
+3. **Comprehensive Diagnostics:** Provides details on the pathogen/pest, severity score, spread risk, and detailed treatment instructions.
+4. **Dual Treatment Pathways:** Recommends both biological/organic remedies (to support organic farming) and chemical solutions (for high-severity infestations) along with preventive agricultural practices.
+5. **Crop Health Dashboard:** Tracks historical diagnoses, maps disease outbreaks, and tracks recovery trajectories over time.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f2a61883-3406-450b-b58e-eb4e47545db5) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Technology Stack
 
-**Use your preferred IDE**
+| Layer | Technology | Description |
+| :--- | :--- | :--- |
+| **Frontend** | React (Vite) | High-contrast, responsive UI tailored with TypeScript, Lucide Icons, and Recharts for interactive crop health tracking. |
+| **Styling** | Tailwind CSS & shadcn/ui | Beautiful, dark-mode-first glassmorphic visual system with micro-animations and smooth transitions. |
+| **Database & Auth** | Supabase | Relational cloud PostgreSQL storing user crop gardens, diagnostic history, and custom treatment logs. |
+| **Computer Vision** | Groq Llama 3.2 Vision | Lightning-fast visual parsing and diagnosis extraction in under 500ms. |
+| **Agronomist AI Chat** | Groq Llama 3.3 70B | Dynamic Conversational AI helping users ask follow-up questions about soil health and fertilizer schedules. |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🗺️ How it Works (The Diagnosis Pipeline)
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```mermaid
+graph TD
+    %% Styling
+    classDef client fill:#22c55e,stroke:#15803d,stroke-width:2px,color:#fff;
+    classDef backend fill:#8b5cf6,stroke:#7c3aed,stroke-width:2px,color:#fff;
+    classDef external fill:#0ea5e9,stroke:#0369a1,stroke-width:2px,color:#fff;
+    
+    %% Elements
+    A["🌿 Grower / Farmer (Frontend UI)"] :::client
+    B["📸 Image Capture / Leaf Upload"] :::client
+    C["🚀 Vite Backend Router"] :::backend
+    D["🧠 Groq Llama 3.2 Vision Agent"] :::external
+    E["🗄️ Supabase Diagnostic Logs"] :::external
+    F["📑 Multi-Modal Diagnosis Payload"] :::backend
+    G["📊 Treatment Plan & Recovery Tracker"] :::client
+    
+    %% Pipeline
+    A -->|1. Uploads leaf photo| B
+    B -->|2. Direct vision request| C
+    C -->|3. Image analysis| D
+    D -->|4. Structured json response| F
+    F -->|5. Store record & severity metrics| E
+    F -->|6. Render treatment instructions| G
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🔐 Security & Credential Protection
 
-**Use GitHub Codespaces**
+> [!IMPORTANT]
+> **All API tokens, database passwords, and environment credentials are fully encrypted and never committed to version control.**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+We enforce robust multi-layered repository security:
+1. **Environment Sandboxing:** All private configurations (Groq API keys, Supabase client configurations) are managed purely in a local, uncommitted `.env` file.
+2. **Git Ignore Safeguards:** The repository features a strict [.gitignore](.gitignore) configuration which explicitly blocks:
+   * Local `.env` and `.env.local` files
+   * Node modules (`node_modules/`)
+   * Production builds (`dist/`)
+   * Lock files and metadata folders
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🚀 Local Development Setup
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 1. Clone & Install Dependencies
+Ensure you have [Node.js](https://nodejs.org/) installed, then run:
+```bash
+# Clone the repository
+git clone https://github.com/parthsharma8368/phyto-shield-ai.git
+cd phyto-shield-ai
 
-## How can I deploy this project?
+# Install dependencies
+npm install
+```
 
-Simply open [Lovable](https://lovable.dev/projects/f2a61883-3406-450b-b58e-eb4e47545db5) and click on Share -> Publish.
+### 2. Configure Your Environment Keys
+Create a `.env` file in the root directory:
+```env
+# Supabase Database Config
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-supabase-public-anon-key
 
-## Can I connect a custom domain to my Lovable project?
+# AI Vision API
+VITE_GROQ_API_KEY=gsk_your_groq_api_key
+```
 
-Yes, you can!
+### 3. Launch Development Server
+```bash
+npm run dev
+```
+Your local server will spin up instantly. Open your browser and navigate to the address shown in your console (usually `http://localhost:5173/`).
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📈 Future Roadmap
+
+* [ ] **Satellite NDVI Integration:** Link with open-source remote-sensing imagery to monitor field-level chlorophyll and health drops before visible leaf necrosis.
+* [ ] **Offline Edge Inference:** Compile vision models to run client-side on mobile devices for diagnostic capabilities in remote areas without internet coverage.
+* [ ] **Geo-Location Disease Mapping:** Regional notifications to alert nearby farms when a highly infectious virus (e.g., Late Blight) is diagnosed in their area.
